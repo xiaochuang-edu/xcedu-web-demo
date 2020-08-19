@@ -59,7 +59,7 @@
       </el-form-item>
       <el-form-item label="附件上传">
         <FileUp
-          v-model="form.imgFileIds"
+          v-model="form.fileIdList"
           upload-type="image"
           :domain-id="domainId"
           dir="demo"
@@ -98,7 +98,7 @@ export default {
         emergency: 0, // 是否紧急
         backIs: 0, // 是否回执
         contentType: 0, // 是否纯文本，
-        imgFileIds: ''
+        fileIdList: ''
       },
       domainId: '',
       isCopy: 0,
@@ -172,6 +172,7 @@ export default {
           this.form.backIs = this.form.backIs ? 1 : 0
           this.form.emergency = this.form.emergency ? 1 : 0
           this.form.contentType = this.form.contentType ? 1 : 0
+          this.form.fileIdList = this.form.fileIdList.split(',')
           if (this.$route.query.id) {
             this.form.id = this.$route.query.id
             updateEmailById(saveType, this.form).then(res => {

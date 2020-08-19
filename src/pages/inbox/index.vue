@@ -4,7 +4,6 @@
       <el-row :gutter="6" type="flex" justify="space-between">
         <el-col :span="8">
           <el-input v-model="searchFrom.searchName" class="input-with-select" placeholder="主题、发件人" clearable>
-            <!-- <el-button slot="suffix" icon="el-icon-search" @click="searchEmail" /> -->
             <template slot="append"><i class="el-icon-search" @click="searchEmail" /></template>
           </el-input>
         </el-col>
@@ -32,7 +31,7 @@
       </el-row>
       <el-form ref="form" :model="searchFrom" label-width="80px">
         <transition name="el-zoom-in-top">
-          <el-row v-show="advanceSearchShow" class="padding-top-size-nomal advance-search-container margin-top-size-nomal">
+          <el-row v-show="advanceSearchShow" class="padding-top-size-nomal padding-left-size-nomal padding-right-size-nomal advance-search-container margin-top-size-nomal ">
             <el-col :span="10">
               <el-form-item label="起止时间">
                 <el-date-picker
