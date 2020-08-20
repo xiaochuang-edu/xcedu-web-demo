@@ -97,7 +97,6 @@
   "dependencies": {
     "@tinymce/tinymce-vue": "^3.2.2",
     "@types/nprogress": "^0.2.0",
-    "@xcedu/web-share": "^1.0.9",
     "axios": "0.19.2",
     "element-ui": "2.13.0",
     "nprogress": "0.2.0",
