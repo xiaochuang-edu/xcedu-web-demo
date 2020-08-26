@@ -1,6 +1,5 @@
 {
   "thead":[
-    { "label": "状态", "prop": "status", "width": 100  },
     { "label": "收件人", "prop": "receiveName", "sort": true, "width": 400 },
     { "label": "主题", "prop": "title"},
     { "label": "优先级", "prop": "emergency", "sort": true, "width": 150 },

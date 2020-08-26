@@ -88,19 +88,9 @@ const baseConf = (env = 'production') => ({
       '.wasm'
     ]
   },
-  // externals: {
-  //   vue: 'Vue',
-  //   vuex: 'Vuex',
-  //   'vue-router': 'VueRouter',
-  //   axios: 'axios',
-  //   'element-ui': 'ELEMENT',
-  //   'vue-class-component': 'VueClassComponent',
-  //   'vue-property-decorator': 'VuePropertyDecorator',
-  //   'vuex-class': 'VuexClass',
-  //   'systemjs-webpack-interop': 'SystemjsWebapckInterop',
-  //   'vuex-router-sync': 'VuexRouterSync',
-  //   nprogress: 'NProgress'
-  // },
+  externals: {
+  'xc-share': 'XcShare'
+  },
   module: {
     rules: [{
       enforce: 'pre',

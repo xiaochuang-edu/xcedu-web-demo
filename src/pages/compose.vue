@@ -7,10 +7,6 @@
       label-width="100px"
       style="width: 1000px; margin: 0 auto"
     >
-      <div style="display: flex; justify-content: flex-end">
-        <el-button type="text" @click="showCopy"><em v-if="!isCopy">显示抄送</em><em v-else>删除抄送</em></el-button>
-        <el-button type="text" @click="showSecret"><em v-if="!isSecrte">显示密送</em><em v-else>删除密送</em></el-button>
-      </div>
       <el-form-item label="收件人" prop="recipientSend">
         <el-row>
           <el-col :span="24">
@@ -18,34 +14,6 @@
             <chooseUser
               ref="recipientSend"
               v-model="form.recipientSend"
-              :allow-write="true"
-              :select-role="roles"
-              :get-user="getUser"
-              :get-search-list="getSearchList"
-            />
-          </el-col>
-        </el-row>
-      </el-form-item>
-      <el-form-item v-if="isCopy" label="抄送人" prop="copySend">
-        <el-row>
-          <el-col :span="24">
-            <chooseUser
-              ref="copySend"
-              v-model="form.copySend"
-              :allow-write="true"
-              :select-role="roles"
-              :get-user="getUser"
-              :get-search-list="getSearchList"
-            />
-          </el-col>
-        </el-row>
-      </el-form-item>
-      <el-form-item v-if="isSecrte" label="密送人" prop="secretSend">
-        <el-row>
-          <el-col :span="24">
-            <chooseUser
-              ref="secretSend"
-              v-model="form.secretSend"
               :allow-write="true"
               :select-role="roles"
               :get-user="getUser"
@@ -91,8 +59,6 @@ export default {
     return {
       form: {
         recipientSend: [],
-        copySend: [],
-        secretSend: [],
         title: '',
         htmlContent: '',
         emergency: 0, // 是否紧急
@@ -117,8 +83,6 @@ export default {
       if (!this.$route.query.id) {
         this.form = {
           recipientSend: [],
-          copySend: [],
-          secretSend: [],
           title: '',
           htmlContent: '',
           emergency: 0, // 是否紧急
@@ -150,32 +114,16 @@ export default {
   methods: {
     getUser: getChooseUserDataByParams, // 获取ztree 数据 ， api 的方法名可自定义， getUser 为固定方法
     getSearchList: getSearchListByValue, // 获取联想搜索 数据， 同上。
-    showCopy () {
-      // 是否显示抄送 或者 删除
-      if (this.isCopy) {
-        this.isCopy = 0
-      } else {
-        this.isCopy = 1
-      }
-    },
-    showSecret () {
-      // 是否显示密送 或者 删除
-      if (this.isSecrte) {
-        this.isSecrte = 0
-      } else {
-        this.isSecrte = 1
-      }
-    },
     submitForm (saveType, formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.form.backIs = this.form.backIs ? 1 : 0
           this.form.emergency = this.form.emergency ? 1 : 0
           this.form.contentType = this.form.contentType ? 1 : 0
-          this.form.fileIdList = this.form.fileIdList.split(',')
+          // this.form.fileIdList = this.form.fileIdList.split(',')
           if (this.$route.query.id) {
             this.form.id = this.$route.query.id
-            updateEmailById(saveType, this.form).then(res => {
+            updateEmailById(this.form).then(res => {
               if (res) {
                 this.$message({
                   message: '修改成功',
@@ -187,8 +135,7 @@ export default {
               }
             })
           } else {
-            createEmail(saveType, this.form).then(res => {
-              // console.log(res)
+            createEmail(this.form).then(res => {
               if (res) {
                 this.$message({
                   message: '发送成功',
