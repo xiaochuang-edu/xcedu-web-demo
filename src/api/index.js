@@ -1,4 +1,3 @@
-// import { axios } from '@xcedu/web-share'
 import { axios } from 'xc-share'
 
 // 修改提交数据

@@ -1,4 +1,4 @@
-import { boot, setPublicPath } from '@xcedu/web-share'
+import { boot, setPublicPath } from 'xc-share'
 import router from './router'
 import store from './stores'
 import '@style/common.scss'
