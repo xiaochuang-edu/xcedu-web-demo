@@ -9,8 +9,8 @@
     <div class="app-nav-bar-btn">
       <el-button type="primary" @click="compose"><i class="icon-plus-o el-icon--left" />新建</el-button>
     </div>
-    <el-menu class="el-menu-vertical-demo" router default-active="/mfs-email/msgList/sendBox">
-      <el-menu-item v-for="(nav, index) in navList" :key="index" :index="`/mfs-email/msgList/${nav.viewName}`">
+    <el-menu class="el-menu-vertical-demo" router default-active="/mfs-demo/msgList/sendBox">
+      <el-menu-item v-for="(nav, index) in navList" :key="index" :index="`/mfs-demo/msgList/${nav.viewName}`">
         <i :class="nav.icon" :style="{ color: nav.color }" />
         <span slot="title">{{ nav.name }}</span>
       </el-menu-item>
@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     compose () {
-      this.$router.push('/mfs-email/compose')
+      this.$router.push('/mfs-demo/compose')
     },
     viewMsgList (name) {
       // this.$router.push('/email/')

@@ -38,7 +38,7 @@ const devServerOptions = () => {
     port: devEnvConfig.DEV_SERVER_PORT,
     compress: true,
     open: true,
-    openPage: 'mfs-email',
+    openPage: 'mfs-demo',
     hot: true,
     headers: {
       'Access-Control-Allow-Origin': '*'
